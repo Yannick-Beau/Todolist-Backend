@@ -1,0 +1,5 @@
+
+
+task: id, title, completion, category_id, status, created_at, updated_ad
+doit avoir une category, 11 task, 1N category: 1 category max
+category: id, name, status, created_at, updated_ad
