@@ -18,3 +18,43 @@ $router->get(
         'as'   => 'main-home'
     ]
 );
+
+$router->get(
+  "/categories",
+  [
+      'uses' => 'CategoryController@list',
+      'as'   => 'category-list'
+  ]
+);
+
+$router->post(
+  "/categories",
+  [
+      'uses' => 'CategoryController@add',
+      'as'   => 'category-add'
+  ]
+);
+
+$router->delete(
+  "/categories/{id}",
+  [
+      'uses' => 'CategoryController@delete',
+      'as'   => 'category-delete'
+  ]
+);
+
+$router->get(
+    "/tasks",
+    [
+        'uses' => 'TaskController@list',
+        'as'   => 'task-list'
+    ]
+  );
+
+  $router->post(
+    "/tasks",
+    [
+        'uses' => 'TaskController@add',
+        'as'   => 'task-add'
+    ]
+  );
