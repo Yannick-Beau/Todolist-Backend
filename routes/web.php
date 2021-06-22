@@ -19,7 +19,55 @@ $router->get(
     ]
 );
 
-$router->get(
+//==============================
+// TaskController
+//==============================
+
+$router->get( 
+  "/tasks",
+  [
+      'uses' => 'TaskController@list',
+      'as'   => 'task-list'
+  ]
+);
+
+$router->post( 
+  "/tasks",
+  [
+      'uses' => 'TaskController@add',
+      'as'   => 'task-add'
+  ]
+);
+
+$router->put( 
+  "/tasks/{id}",
+  [
+      'uses' => 'TaskController@edit',
+      'as'   => 'task-edit-put'
+  ]
+);
+
+$router->patch( 
+  "/tasks/{id}",
+  [
+      'uses' => 'TaskController@edit',
+      'as'   => 'task-edit-patch'
+  ]
+);
+
+$router->delete( 
+  "/tasks/{id}",
+  [
+      'uses' => 'TaskController@delete',
+      'as'   => 'task-delete'
+  ]
+);
+
+//==============================
+// CategoryController
+//==============================
+
+$router->get( 
   "/categories",
   [
       'uses' => 'CategoryController@list',
@@ -27,7 +75,7 @@ $router->get(
   ]
 );
 
-$router->post(
+$router->post( 
   "/categories",
   [
       'uses' => 'CategoryController@add',
@@ -35,26 +83,10 @@ $router->post(
   ]
 );
 
-$router->delete(
+$router->delete( 
   "/categories/{id}",
   [
       'uses' => 'CategoryController@delete',
       'as'   => 'category-delete'
   ]
 );
-
-$router->get(
-    "/tasks",
-    [
-        'uses' => 'TaskController@list',
-        'as'   => 'task-list'
-    ]
-  );
-
-  $router->post(
-    "/tasks",
-    [
-        'uses' => 'TaskController@add',
-        'as'   => 'task-add'
-    ]
-  );

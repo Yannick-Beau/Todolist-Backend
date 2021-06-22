@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -18,23 +17,17 @@ class CategoryController extends Controller
     return response()->json( $categoriesList, 200 );
   }
 
-  public function add(Request $request)
+  public function add()
   {
     $category = new Category();
 
     // On rempli les propriétés de notre
     // nouvelle category avec les info envoyées en $_POST
     // On vérifie qu'on a pas reçu n'importe quoi au passage
-    $category->name = $request->input('name'); // Presque ... :D
-    $category->status =$request->input('status');
+    $category->title = $_POST['title']; // Presque ... :D
+    // etc ...
 
-    if($category->save()){
-        return response()->json( $category, 201 );
-    }
-    else {
-        return response()->json(['error' => 'Internal Server Error'], 500);
-    }
-
+    $category->save();
   }
 
   public function edit()
@@ -42,7 +35,7 @@ class CategoryController extends Controller
 
   }
 
-  // La méthode delete reçoit en paramètre les
+  // La méthode delete reçoit en paramètre les 
   // variables de l'URL, définies dans la route
   public function delete( $id )
   {
